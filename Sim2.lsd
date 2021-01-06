@@ -1,11 +1,10 @@
 	
 Label Root
 {
-	Son: MODEL
-	Label MODEL
+	Son: RW
+	Label RW
 	{
 		Var: X
-		Param: c
 
 	}
 
@@ -17,9 +16,8 @@ DATA
 
 Object: Root C	1
 
-Object: MODEL C	10
-Var: X 1 s + n p	0	0	0	0	0	0	0	0	0	0
-Param: c 0 n + n n	1	1	1	1	1	1	1	1	1	1
+Object: RW C	10
+Var: X 1 s + n p	5.78633932007161	0.0900799560524945	7.09042522564051	4.70640805167442	7.64592570697082	4.67392685502619	2.6900104969177	8.31692589663304	5.51324938817624	0.700814949807997
 
 SIM_NUM 1
 SEED 1
@@ -33,22 +31,16 @@ Object_Root
 (no description available)
 END_DESCRIPTION
 
-Object_MODEL
+Object_RW
 (no description available)
 _INIT_
 
 END_DESCRIPTION
 
 Variable_X
-Variável X
+Variável X é um passeio aleatório
 _INIT_
-All 1 instances equal to 0.
-END_DESCRIPTION
-
-Parameter_c
-(no description available)
-_INIT_
-All 10 instances increasing from 1 with step 0.
+All 10 instances drawn from uniform distribution between 0 and 10.
 END_DESCRIPTION
 
 
@@ -76,12 +68,10 @@ MODELBEGIN
 
 EQUATION("X")
 /*
-Variável X
+Variável X é um passeio aleatório
 */
 
-RESULT(VL("X",1)+V("c"))
-
-
+RESULT(VL("X",1) + uniform(-10,10))
 
 
 

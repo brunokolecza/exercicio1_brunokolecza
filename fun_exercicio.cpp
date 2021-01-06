@@ -11,12 +11,10 @@ MODELBEGIN
 
 EQUATION("X")
 /*
-Variável X
+Variável X é um passeio aleatório
 */
 
-RESULT(VL("X",1)+V("c"))
-
-
+RESULT(VL("X",1) + uniform(-10,10))
 
 
 
