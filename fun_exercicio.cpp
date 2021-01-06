@@ -14,8 +14,22 @@ EQUATION("X")
 Variável X é um passeio aleatório
 */
 
-RESULT(VL("X",1) + uniform(-10,10))
+RESULT(VL("X",1) + uniform(0,1))
 
+EQUATION("X_Sum")
+v[0]= 0;
+CYCLE(cur, "FIRM")
+{
+		v[1] = VS(cur, "X");
+		v[0] = v[0] + v[1];
+}
+RESULT(v[0])
+
+EQUATION("X_Ave")
+RESULT(AVE("X"))
+
+EQUATION("X_Max")
+RESULT(MAX("X"))
 
 
 
