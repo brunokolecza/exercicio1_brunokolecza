@@ -25,7 +25,7 @@ CYCLE(cur, "FIRM")
 }
 RESULT(v[0])
 
-EQUATION("X_Ave")
+EQUATION("x_ave")
 v[0] = 0; 
 CYCLE(cur, "FIRM")
 {
@@ -36,8 +36,10 @@ CYCLE(cur, "FIRM")
 RESULT(v[2])
 
 
+EQUATION("X_Ave")
+RESULT(AVE("X"))
 
-EQUATION("X_Max")
+EQUATION("x_max")
 v[0] = 0;
 CYCLE(cur, "FIRM")
 {
@@ -53,28 +55,17 @@ CYCLE(cur, "FIRM")
 }
 RESULT(v[0])
 
+/*if(v[1] > v[0])
+v[2] = v[1];
+else
+v[2] = v[0];
+RESULT(v[2])
+*/
 
-EQUATION("X_Share")
-RESULT(V("X")/V("X_Sum"))
 
-EQUATION("X_Share_Sum")
-v[0] = 0;
-CYCLE(cur, "FIRM")
-{
-		v[1] = VS(cur, "X_Share");
-		v[0] = v[0] + v[1];
-}
-RESULT(v[0])		
 
-// Desafio
-EQUATION("Pos_X")
-CYCLE(cur, "FIRM")
-{
-		v[1] = VS(cur, "X_Max");
-		v[2] = TSEARCH(v[1], pos);
-}
-
-		
+EQUATION("X_Max")
+RESULT(MAX("X"))
 
 
 

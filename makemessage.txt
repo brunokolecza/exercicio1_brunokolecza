@@ -1,0 +1,45 @@
+In file included from C:/Lsd/src/fun_head_fast.h:19,
+                 from fun_exercicio.cpp:4:
+fun_exercicio.cpp: In function 'void init_map()':
+C:/Lsd/src/fun_head.h:487:27: error: 'p' was not declared in this scope
+  487 | #define TSEARCH( X, Y ) ( p->turbosearch( ( char * ) X, 0, Y ) )
+      |                           ^
+fun_exercicio.cpp:70:1: note: in expansion of macro 'TSEARCH'
+   70 | TSEARCH("X_Max",pos)
+      | ^~~~~~~
+fun_exercicio.cpp:70:17: error: 'pos' was not declared in this scope; did you mean 'pow'?
+   70 | TSEARCH("X_Max",pos)
+      |                 ^~~
+C:/Lsd/src/fun_head.h:487:60: note: in definition of macro 'TSEARCH'
+  487 | #define TSEARCH( X, Y ) ( p->turbosearch( ( char * ) X, 0, Y ) )
+      |                                                            ^
+C:/Lsd/src/fun_head.h:212:3: error: no match for 'operator=' (operand types are 'eq_mapT' {aka 'std::unordered_map<std::__cxx11::basic_string<char>, std::function<double(object*, variable*)> >'} and '<brace-enclosed initializer list>')
+  212 |   }; \
+      |   ^
+fun_exercicio.cpp:77:1: note: in expansion of macro 'MODELEND'
+   77 | MODELEND
+      | ^~~~~~~~
+In file included from /usr/lib/gcc/x86_64-w64-mingw32/10/include/c++/unordered_map:47,
+                 from C:/Lsd/src/decl.h:60,
+                 from C:/Lsd/src/fun_head.h:25,
+                 from C:/Lsd/src/fun_head_fast.h:19,
+                 from fun_exercicio.cpp:4:
+/usr/lib/gcc/x86_64-w64-mingw32/10/include/c++/bits/unordered_map.h:271:7: note: candidate: 'std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>& std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::operator=(const std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>&) [with _Key = std::__cxx11::basic_string<char>; _Tp = std::function<double(object*, variable*)>; _Hash = std::hash<std::__cxx11::basic_string<char> >; _Pred = std::equal_to<std::__cxx11::basic_string<char> >; _Alloc = std::allocator<std::pair<const std::__cxx11::basic_string<char>, std::function<double(object*, variable*)> > >]'
+  271 |       operator=(const unordered_map&) = default;
+      |       ^~~~~~~~
+/usr/lib/gcc/x86_64-w64-mingw32/10/include/c++/bits/unordered_map.h:271:17: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'const std::unordered_map<std::__cxx11::basic_string<char>, std::function<double(object*, variable*)> >&'
+  271 |       operator=(const unordered_map&) = default;
+      |                 ^~~~~~~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-w64-mingw32/10/include/c++/bits/unordered_map.h:275:7: note: candidate: 'std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>& std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::operator=(std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>&&) [with _Key = std::__cxx11::basic_string<char>; _Tp = std::function<double(object*, variable*)>; _Hash = std::hash<std::__cxx11::basic_string<char> >; _Pred = std::equal_to<std::__cxx11::basic_string<char> >; _Alloc = std::allocator<std::pair<const std::__cxx11::basic_string<char>, std::function<double(object*, variable*)> > >]'
+  275 |       operator=(unordered_map&&) = default;
+      |       ^~~~~~~~
+/usr/lib/gcc/x86_64-w64-mingw32/10/include/c++/bits/unordered_map.h:275:17: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'std::unordered_map<std::__cxx11::basic_string<char>, std::function<double(object*, variable*)> >&&'
+  275 |       operator=(unordered_map&&) = default;
+      |                 ^~~~~~~~~~~~~~~
+/usr/lib/gcc/x86_64-w64-mingw32/10/include/c++/bits/unordered_map.h:289:7: note: candidate: 'std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>& std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::operator=(std::initializer_list<typename std::_Hashtable<_Key, std::pair<const _Key, _Tp>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::__is_nothrow_invocable<const _Hash&, const _Key&> > >::value, false, true> >::value_type>) [with _Key = std::__cxx11::basic_string<char>; _Tp = std::function<double(object*, variable*)>; _Hash = std::hash<std::__cxx11::basic_string<char> >; _Pred = std::equal_to<std::__cxx11::basic_string<char> >; _Alloc = std::allocator<std::pair<const std::__cxx11::basic_string<char>, std::function<double(object*, variable*)> > >; typename std::_Hashtable<_Key, std::pair<const _Key, _Tp>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::__is_nothrow_invocable<const _Hash&, const _Key&> > >::value, false, true> >::value_type = std::pair<const std::__cxx11::basic_string<char>, std::function<double(object*, variable*)> >]'
+  289 |       operator=(initializer_list<value_type> __l)
+      |       ^~~~~~~~
+/usr/lib/gcc/x86_64-w64-mingw32/10/include/c++/bits/unordered_map.h:289:46: note:   no known conversion for argument 1 from '<brace-enclosed initializer list>' to 'std::initializer_list<std::pair<const std::__cxx11::basic_string<char>, std::function<double(object*, variable*)> > >'
+  289 |       operator=(initializer_list<value_type> __l)
+      |                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+make: *** [makefile:56: fun_exercicio.o] Error 1
