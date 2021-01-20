@@ -8,13 +8,15 @@ Label Root
 		Label FIRM
 		{
 			Var: X
+			Var: X_Share
 
 		}
 
 		Var: X_Ave
 		Var: X_Max
 		Var: X_Sum
-		Var: X_Share
+		Var: X_Share_Sum
+		Var: Pos_X
 
 	}
 
@@ -30,10 +32,12 @@ Object: SECTOR C	1
 Var: X_Ave 0 s + n p
 Var: X_Max 0 s + n p
 Var: X_Sum 0 s + n p
-Var: X_Share 0 s + n p
+Var: X_Share_Sum 0 s + n p
+Var: Pos_X 0 s + n p
 
 Object: FIRM C	10
 Var: X 1 s + n n	0	0	0	0	0	0	0	0	0	0
+Var: X_Share 0 s + n p
 
 SIM_NUM 1
 SEED 1
@@ -71,7 +75,13 @@ _INIT_
 
 END_DESCRIPTION
 
-Variable_X_Share
+Variable_X_Share_Sum
+(no description available)
+_INIT_
+
+END_DESCRIPTION
+
+Variable_Pos_X
 (no description available)
 END_DESCRIPTION
 
@@ -85,6 +95,12 @@ Variable_X
 Variável X é um passeio aleatório
 _INIT_
 All 10 instances equal to 0.
+END_DESCRIPTION
+
+Variable_X_Share
+(no description available)
+_INIT_
+
 END_DESCRIPTION
 
 

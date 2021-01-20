@@ -31,8 +31,8 @@ CYCLE(cur, "FIRM")
 {
 		v[1] = VS(cur, "X");
 		v[0] = v[0] + v[1];
-		v[2] = v[0]/COUNT("FIRM");
 }
+v[2] = v[0]/COUNT("FIRM");
 RESULT(v[2])
 
 
@@ -55,7 +55,13 @@ RESULT(v[0])
 
 
 EQUATION("X_Share")
-RESULT(V("X")/V("X_Sum"))
+v[0] = V("X");
+v[1] = V("X_Sum");
+if(v[1] != 0)
+v[2] = v[0]/v[1];
+else
+v[2] = 0;
+RESULT(v[2])
 
 EQUATION("X_Share_Sum")
 v[0] = 0;
@@ -68,16 +74,28 @@ RESULT(v[0])
 
 // Desafio
 EQUATION("Pos_X")
+v[0] = v[1] = 0;
 CYCLE(cur, "FIRM")
 {
-		v[1] = VS(cur, "X_Max");
-		v[2] = TSEARCH(v[1], pos);
+		v[1] = v[1] + 1;
+		v[2] = VS(cur, "X");
+		if(v[2]>v[0])
+		{
+		v[0] = v[2];
+		v[3] = v[1];
+		}
 }
+RESULT(v[3])
 
-		
-
-
-
+EQUATION("Rank")
+SORT("FIRM", "X", "DOWN");
+v[0] = 0;
+CYCLE(cur, "FIRM")
+{
+		v[0]++;
+		WRITES(cur, "firm_rank", v[0]);
+}
+RESULT(0)
 
 MODELEND
 
