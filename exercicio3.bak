@@ -30,7 +30,7 @@ DATA
 Object: Root C	1
 
 Object: SETOR C	1
-Var: X_sum 0 s + n n
+Var: X_sum 0 s + n p
 
 Object: FIRMA C	10
 Var: X 1 s + n p	10	10	10	10	10	10	10	10	10	10

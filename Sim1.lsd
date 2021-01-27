@@ -1,10 +1,23 @@
 	
 Label Root
 {
-	Son: RW
-	Label RW
+	Son: SETOR
+	Label SETOR
 	{
-		Var: X
+		Son: FIRMA
+		Label FIRMA
+		{
+			Var: X
+			Var: P
+			Var: Q
+			Param: a
+			Param: b
+			Param: c
+			Var: X_share
+
+		}
+
+		Var: X_sum
 
 	}
 
@@ -16,13 +29,22 @@ DATA
 
 Object: Root C	1
 
-Object: RW C	1
-Var: X 1 s + n p	0
+Object: SETOR C	1
+Var: X_sum 0 s + n n
+
+Object: FIRMA C	10
+Var: X 1 s + n p	10	10	10	10	10	10	10	10	10	10
+Var: P 1 s + n p	1	1	1	1	1	1	1	1	1	1
+Var: Q 1 s + n p	1	1	1	1	1	1	1	1	1	1
+Param: a 0 s + n n	5	5	5	5	5	5	5	5	5	5
+Param: b 0 s + n n	5	5	5	5	5	5	5	5	5	5
+Param: c 0 s + n n	1	1	1	1	1	1	1	1	1	1
+Var: X_share 0 s + n p
 
 SIM_NUM 1
 SEED 1
 MAX_STEP 100
-EQUATION fun_exercicio.cpp
+EQUATION fun_abm.cpp
 MODELREPORT report_Sim1.html
 
 DESCRIPTION
@@ -31,16 +53,64 @@ Object_Root
 (no description available)
 END_DESCRIPTION
 
-Object_RW
+Object_SETOR
 (no description available)
+_INIT_
+
+END_DESCRIPTION
+
+Variable_X_sum
+(no description available)
+_INIT_
+
+END_DESCRIPTION
+
+Object_FIRMA
+(no description available)
+_INIT_
+
 END_DESCRIPTION
 
 Variable_X
-Variável X é um passeio aleatório
-
-
+(no description available)
 _INIT_
-All 1 instances equal to 0.
+All 10 instances equal to 10.
+END_DESCRIPTION
+
+Variable_P
+(no description available)
+_INIT_
+All 10 instances equal to 1.
+END_DESCRIPTION
+
+Variable_Q
+(no description available)
+_INIT_
+All 10 instances equal to 1.
+END_DESCRIPTION
+
+Parameter_a
+(no description available)
+_INIT_
+All 10 instances equal to 5.
+END_DESCRIPTION
+
+Parameter_b
+(no description available)
+_INIT_
+All 10 instances equal to 5.
+END_DESCRIPTION
+
+Parameter_c
+(no description available)
+_INIT_
+All 10 instances equal to 1.
+END_DESCRIPTION
+
+Variable_X_share
+(no description available)
+_INIT_
+All 10 instances equal to 0.
 END_DESCRIPTION
 
 
@@ -66,12 +136,47 @@ MODELBEGIN
 
 // insert your equations here, between the MODELBEGIN and MODELEND words
 
-EQUATION("X")
-/*
-Variável X é um passeio aleatório
-*/
+EQUATION("X") // vendas da firma
+v[0] = V("a");
+v[1] = V("P");
+v[2] = V("b");
+v[3] = V("Q");
+RESULT(v[0] * v[1] + v[2] * v[3] + uniform(-1,1)) 
 
-RESULT(VL("X",1) + uniform(-10,10))
+EQUATION("X_sum")
+RESULT(SUM("X"))
+
+EQUATION("X_share") // parcela de mercado da firma
+v[0] = V("X");
+v[1] = V("X_sum");
+if(v[1] != 0)
+v[2] = v[0]/v[1];
+else
+v[2] = 0;
+RESULT(v[2])
+
+EQUATION("P") // preco do produto
+v[0] = V("X_share") - VL("X_share", 1);
+v[1] = V("c");
+if (v[0] > 0)
+v[2] = VL("P", 1) + v[1] * v[0];
+else
+v[2] = VL("P", 1) - v[1] * v[0];
+RESULT(v[2])
+
+ 
+EQUATION("Q") // qualidade do produto
+v[0] = VL("Q",1) + uniform(-1, 1);
+v[1] = VL("Q", 1);
+if (v[0] > v[1])
+v[2] = v[0];
+else
+v[2] = v[1];
+RESULT(v[2])
+
+
+
+
 
 
 

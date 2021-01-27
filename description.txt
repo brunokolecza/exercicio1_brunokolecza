@@ -1,5 +1,6 @@
-Model exercicio (ver. 1.0)
+Model exercicio3 (ver. 1.0)
 
-Exercício da primeira aula
+modelo para as vendas de uma firma
+
 (PRESS CTRL+E TO EDIT EQUATIONS)
 
